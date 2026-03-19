@@ -54,9 +54,9 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "JW"
-  avatar : "/assets/images/bio-photo.jpg"
-  bio    : "blah-blah"
+  name     : "JW"
+  avatar   : "/assets/images/bio-photo.jpg"
+  bio      : "blah-blah"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
