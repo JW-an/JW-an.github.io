@@ -57,13 +57,6 @@ author:
   name     : "JW"
   avatar   : "/assets/images/bio-photo.jpg"
   bio      : "blah-blah"
-  links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
 
 footer:
   links:
