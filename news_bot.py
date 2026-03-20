@@ -4,7 +4,7 @@ import os
 
 # 깃허브 금고에서 열쇠를 꺼내옵니다
 API_KEY = os.environ.get('NEWS_API_KEY')
-QUERY = "S&P500" # 관심 있는 키워드로 바꾸세요 (예: 주식, 부동산, 육아 등)
+QUERY = "경제" # 관심 있는 키워드로 바꾸세요 (예: 주식, 부동산, 육아 등)
 
 def fetch_news():
     url = f"https://newsapi.org/v2/everything?q={QUERY}&sortBy=publishedAt&apiKey={API_KEY}&language=ko"
