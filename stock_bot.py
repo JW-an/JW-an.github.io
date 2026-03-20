@@ -11,13 +11,16 @@ STOCKS = {
 }
 
 def get_stock_data():
+  def get_stock_data():
     summary = ""
     for ticker, name in STOCKS.items():
         try:
             data = yf.Ticker(ticker)
-            info = data.history(period="2d")
+            # period를 2d에서 5d로 변경하여 휴일/시차로 인한 데이터 누락 방지
+            info = data.history(period="5d")
             
             if len(info) < 2:
+                summary += f"- **{name}**: 데이터 로드 지연 (영업일 기준 2일치 확보 불가)\n"
                 continue
 
             current_val = info['Close'].iloc[-1]
@@ -29,7 +32,6 @@ def get_stock_data():
                 icon = "💸" if change > 0 else "📉"
                 unit = "원"
             elif "공포 지수" in name:
-                # KVIX는 상승이 불안을 의미하므로 경고 아이콘 활용 가능
                 icon = "⚠️" if change > 0 else "✅"
                 unit = "pt"
             else:
@@ -41,7 +43,7 @@ def get_stock_data():
             summary += f"- **{name}**: 데이터 로드 실패\n"
             
     return summary
-
+      
 def create_post(stock_summary):
     now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)))
     date_str = now.strftime("%Y-%m-%d")
