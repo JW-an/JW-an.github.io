@@ -11,12 +11,11 @@ STOCKS = {
 }
 
 def get_stock_data():
-  def get_stock_data():
     summary = ""
     for ticker, name in STOCKS.items():
         try:
             data = yf.Ticker(ticker)
-            # period를 2d에서 5d로 변경하여 휴일/시차로 인한 데이터 누락 방지
+            # 데이터를 5일치로 넉넉히 가져와서 시차/휴장일 누락 방지
             info = data.history(period="5d")
             
             if len(info) < 2:
@@ -43,7 +42,7 @@ def get_stock_data():
             summary += f"- **{name}**: 데이터 로드 실패\n"
             
     return summary
-      
+
 def create_post(stock_summary):
     now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)))
     date_str = now.strftime("%Y-%m-%d")
